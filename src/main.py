@@ -100,6 +100,7 @@ async def admin(ctx, *arg):
                 kick_members = True
             )
         )
+        await ctx.send("The Admin role was created")
 
     await member.add_roles(admin_role)
     await ctx.send("The admin role was added to " + member_name)
@@ -137,6 +138,7 @@ async def mute(ctx, *arg):
                 read_message_history = False
             )
         )
+        await ctx.send("The Ghost role was created")
 
     for r in member.roles:
         if r.name == ghost_role.name:
@@ -151,7 +153,7 @@ async def mute(ctx, *arg):
 async def ban(ctx, *arg):
     member_name = get_member_name(arg)
     if (member_name == None or member_name == ''):
-        await ctx.send('Missing parameter (member_name)')
+        await ctx.send('Missing parameter member_name')
         return
 
     member = None
@@ -166,10 +168,12 @@ async def ban(ctx, *arg):
 
     await ctx.guild.ban(member)
     await ctx.send(member_name + " was banned !!!")
+    await ctx.send("https://gifrific.com/wp-content/uploads/2013/05/Thor-Hammer-Slam-to-Ground.gif")
 
 @bot.command()
 async def xkcd(ctx):
     random_number = Rand.randrange(1, 1000)
+    await ctx.send("Random comic from the internet:")
     await ctx.send('https://xkcd.com/' + str(random_number))
 
 token = "<TOKEN>"
